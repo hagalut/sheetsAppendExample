@@ -46,7 +46,7 @@ import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
 public class MainActivity extends Activity
-implements EasyPermissions.PermissionCallbacks {
+        implements EasyPermissions.PermissionCallbacks {
     GoogleAccountCredential mCredential;
     private TextView mOutputText;
     private Button mCallApiButton;
@@ -363,41 +363,36 @@ implements EasyPermissions.PermissionCallbacks {
          */
         private List<String> appendSheetApi() throws IOException {
             String spreadsheetId = "1jxuF1ytooaTRwc-qDq5tHMwhJc7f5JtmM6zbb4mCN1I";
-            /*
-            String range = "Ark2!A2:E";
-            List<String> results = new ArrayList<String>();
-            ValueRange response = this.mService.spreadsheets().values()
-                    .get(spreadsheetId, range)
-                    .execute();
-            List<List<Object>> values = response.getValues();
-            if (values != null) {
-                results.add("Name, Major");
-                for (List row : values) {
-                    results.add(row.get(0) + ", " + row.get(4));
-                }
-            }*/
+
+            List<Object> results = new ArrayList<>();
+            results.add("ALKÆJHlksdjhflkjsdhf");
+            List<List<Object>> resultsInResults = new ArrayList<>();
+            resultsInResults.add(results);
 
 
-            List<String> results = new ArrayList<String>();
-            String range = "Ark2!A2:E";
-            ValueRange response = this.mService.spreadsheets().values()
-                    .get(spreadsheetId, range)
-                    .execute();
+            String range = "Ark4!G1:G";
+            //ValueRange response = this.mService.spreadsheets().values().get(spreadsheetId, range).execute();
+            ValueRange response = new ValueRange();
+
+            response.setRange("messages!A1:A");
+            response.setValues(resultsInResults);
+
             List<List<Object>> values = response.getValues();
 
             ValueRange valueRange = new ValueRange();
             valueRange.setValues(values);
 
-            //this.mService.spreadsheets().values().update(spreadsheetId, "Ark2!A2:E", valueRange).setValueInputOption("RAW").execute();
-            this.mService.spreadsheets().values().append(spreadsheetId, "Ark2!A2:E", valueRange).setValueInputOption("RAW").execute();
+            this.mService.spreadsheets().values().append(spreadsheetId, "messages!A1:A", valueRange).setValueInputOption("RAW").execute();
             if (values != null) {
-                results.add("Name, Major");
                 for (List row : values) {
                     results.add(row.get(0) + ", " + row.get(4));
                 }
             }
 
-            return results;
+            ArrayList<String> asdasdas = new ArrayList<>();
+            
+
+            return asdasdas;
         }
 
 
